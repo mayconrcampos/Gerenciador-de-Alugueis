@@ -4,6 +4,7 @@ html, body {
     font-family: Roboto, Arial, sans-serif;
     font-size: 15px;
     }
+  
     ul {
         margin-top: 200px;
     }
@@ -30,7 +31,7 @@ html, body {
     }
     h1 {
     text-align:center;
-    fone-size:18;
+    font-size:18;
     }
     button:hover {
     opacity: 0.8;
@@ -42,8 +43,7 @@ html, body {
     .container {
     padding: 16px 0;
     text-align:left;
-    margin-top: 115px;
-    width: 95%;
+    width: 50%;
     }
     span.psw {
     float: right;
