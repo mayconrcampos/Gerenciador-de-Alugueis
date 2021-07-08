@@ -1,0 +1,3 @@
+<?php
+
+// Para ser implementado.
