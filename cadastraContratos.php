@@ -18,29 +18,34 @@
         <a class="navbar-brand mx-auto text-center" href="#"><img class="rounded img-fluid" src="./css/Banner - For Rent.png" width="850px"></a>
       </nav>
     </header>
-    <div class="container w-auto text-dark bg-white">
+    <!--- Tab Menu --->
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded">
         <ul class="nav nav-tabs w-auto">
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="cadastroLocador.php">Cadastrar Locador</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastroPF.php">Cadastrar Pessoa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="cadastroLocatario.php">Cadastrar Locatário</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
+              <a class="nav-link active text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white active bg-secondary border-dark" href="#">Contratos</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listarImoveis.php">Listar Imóveis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="gerenciaMensalidades.php">Mensalidades</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Fechar Contratos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="listarContratos.php">Listar Contratos</a>
             </li>
         </ul>
 
-    </div>
     
   
-
+        <footer class="fixed-bottom bg-secondary text-white text-center p-1">
+                For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021
+        </footer>
     
 
 

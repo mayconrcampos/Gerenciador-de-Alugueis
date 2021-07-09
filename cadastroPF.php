@@ -22,25 +22,28 @@
     <div class="container w-auto text-dark bg-white border border-dark p-1 rounded">
         <ul class="nav nav-tabs w-auto">
             <li class="nav-item">
-              <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Locador</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Pessoa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="cadastroLocatario.php">Listar Locadores/Locatários</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Contratos</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listarImoveis.php">Listar Imóveis</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="gerenciaMensalidades.php">Mensalidades</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Fechar Contratos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="listarContratos.php">Listar Contratos</a>
             </li>
         </ul>
 
         <!---Formulário de Cadastro de Locador --->
         <fieldset>
-        <legend>Cadastro de Locador e Locatário</legend>
+        <legend>Cadastro de Pessoa Física</legend>
         <div class="container w-auto mt-2">
             <form class="form-group border border-dark p-4 rounded" action="" method="post">
               <!----Linha 1---->

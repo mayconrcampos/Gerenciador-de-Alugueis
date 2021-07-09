@@ -24,7 +24,7 @@
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroPF.php">Cadastrar Pessoa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active text-white bg-secondary border-dark" href="#">Listar Locadores/Locatários</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
@@ -36,22 +36,25 @@
               <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Fechar Contratos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="listarContratos.php">Listar Contratos</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Listar Contratos</a>
             </li>
         </ul>
 
       <!--- Table ---->
       <fieldset>
-        <legend>Listar Locadores e Locatários</legend>
+        <legend>Listar Contratos</legend>
       
           <div class="container w-auto mt-2">
             <table class="table table-sm table-responsive table-hover border border-dark p-4">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">nome</th>
-                  <th scope="col">Profissão</th>
-                  <th scope="col">Data de Nascimento</th>
-                  <th scope="col">Pessoa</th>
+                  <th scope="col">Locador</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Locatário</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Imóvel</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Parcelas</th>
                   <th scope="col">Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>

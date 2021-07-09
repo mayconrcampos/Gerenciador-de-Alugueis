@@ -36,7 +36,7 @@
         <label style="padding-left: 15px">
         <input type="checkbox"  checked="checked" name="remember"> Lembrar senha
         </label>
-        <span class="psw"><a href="cadastroLocador.php"> Esqueceu a senha?</a></span>
+        <span class="psw"><a href="cadastroPF.php"> Esqueceu a senha?</a></span>
       </div>
     </form>
 

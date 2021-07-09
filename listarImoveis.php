@@ -24,13 +24,13 @@
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroPF.php">Cadastrar Pessoa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active text-white bg-secondary border-dark" href="#">Listar Locadores/Locatários</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-secondary bg-white border-dark" href="listarImoveis.php">Listar Imóveis</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Listar Imóveis</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Fechar Contratos</a>
@@ -42,16 +42,18 @@
 
       <!--- Table ---->
       <fieldset>
-        <legend>Listar Locadores e Locatários</legend>
+        <legend>Listar Imóveis</legend>
       
           <div class="container w-auto mt-2">
             <table class="table table-sm table-responsive table-hover border border-dark p-4">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col">nome</th>
-                  <th scope="col">Profissão</th>
-                  <th scope="col">Data de Nascimento</th>
-                  <th scope="col">Pessoa</th>
+                  <th scope="col">Descricao</th>
+                  <th scope="col">Utilização</th>
+                  <th scope="col">W.C</th>
+                  <th scope="col">Área(m²)</th>
+                  <th scope="col">Garagem</th>
+                  <th scope="col">Designação</th>
                   <th scope="col">Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
