@@ -13,49 +13,127 @@
 
 <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark align-items-center">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary align-items-center">
         <a class="navbar-brand mx-auto text-center" href="#"><img class="rounded img-fluid" src="./css/Banner - For Rent.png" width="850px"></a>
       </nav>
     </header>
     
-    <div class="container border">
-        <ul class="nav nav-tabs">
+    <!--- Tab Menu --->
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded">
+        <ul class="nav nav-tabs w-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Cadastro de Locadores</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Locador</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cadastroLocatario.php">Cadastro de Locatários</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastroLocatario.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cadastroImoveis.php">Cadastro de Imóveis</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cadastraContratos.php">Contratos de Aluguéis</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Contratos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="gerenciaMensalidades.php">Gerenciar Mensalidades</a>
+              <a class="nav-link text-secondary bg-white border-dark" href="gerenciaMensalidades.php">Mensalidades</a>
             </li>
         </ul>
-        <div class="container border">
-            <form class="form-group" action="" method="post">
-            <div class="row">
-                <div class="col-sm">
-                    <label for="">Nome</label>
-                    <input class="form-control" type="text" name="nome" id="">
-                </div>
-                <div class="col">
-                    <label for="">Logradouro</label>
-                    <input class="form-control" type="text" name="logradouro" id="">
-                </div>
-            </div>
+
+        <!---Formulário de Cadastro de Locador --->
+        <fieldset>
+        <legend>Cadastro de Locador e Locatário</legend>
+        <div class="container w-auto mt-2">
+            <form class="form-group border border-dark p-4 rounded" action="" method="post">
+              <!----Linha 1---->
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <label for="">Nome</label>
+                      <input class="form-control form-control-sm" type="text" name="nome" id="" autofocus>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="exampleFormControlSelect1">Estado Civil</label>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="est_civil">
+                          <option value="Solteiro" selected>Solteiro</option>
+                          <option value="Casado">Casado</option>
+                          <option value="Divorciado">Divorciado</option>
+                          <option value="Viúvo">Viúvo</option>
+                        </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="">Profissão</label>
+                    <input class="form-control form-control-sm" type="text" name="profissao" size="20" maxlength="127">
+                      
+                  </div>
+              </div>
+
+              <!----Linha 2---->
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="">RG</label>
+                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="">CPF</label>
+                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="">Data de Nascimento</label>
+                    <input class="form-control form-control-sm" type="date" name="data_nasc" id="">
+                  </div>
+              </div>
+
+              <!----Linha 3---->
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <label for="">Logradouro</label>
+                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127">
+                  </div>
+                  <div class="col-md-2">
+                    <label for="">Número</label>
+                    <input class="form-control form-control-sm" type="text" name="numero" maxlength="5">
+                  </div>
+                  <div class="col-md-4">
+                    <label for="">Complemento</label>
+                    <input class="form-control form-control-sm" type="text" name="complemento" id="">
+                  </div>
+              </div>
+
+              <!----Linha 4---->
+              <div class="row mb-3">
+                  <div class="col-md-5">
+                      <label for="">Bairro</label>
+                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127">
+                  </div>
+                  <div class="col-md-5">
+                    <label for="">Cidade</label>
+                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127">
+                  </div>
+                  <div class="col-md-2">
+                    <label for="">CEP</label>
+                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9">
+                  </div>
+              </div>
+              <fieldset class="container border">
+              <legend>Selecione</legend>
+              <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+                  <label class="custom-control-label" for="customRadio1">Locador</label>
+              </div>
+              <div class="custom-control custom-radio">
+                  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+                  <label class="custom-control-label" for="customRadio2">Locatário</label>                
+              </div>
+              </fieldset>
+
+              <input type="submit" class="btn btn-primary mt-3" value="Cadastrar">
             </form>
         </div>
-
-        
+        </fieldset>
     </div>
-    
-  
+    <br><br><br>
 
+    <footer class="fixed-bottom bg-secondary text-white text-center p-1">
+      For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021
+    </footer>
     
 
 

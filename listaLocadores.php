@@ -12,32 +12,34 @@
 
 
 <body>
- 
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark align-items-center">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary align-items-center">
         <a class="navbar-brand mx-auto text-center" href="#"><img class="rounded img-fluid" src="./css/Banner - For Rent.png" width="850px"></a>
       </nav>
     </header>
-    <div class="container border">
-        <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="cadastroLocador.php">Cadastro de Locadores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Cadastro de Locatários</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cadastroImoveis.php">Cadastro de Imóveis</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="cadastraContratos.php">Contratos de Aluguéis</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="gerenciaMensalidades.php">Gerenciar Mensalidades</a>
-        </li>
-    </ul>
+    
+    <div class="container w-auto text-dark bg-white">
+        <ul class="nav nav-tabs w-auto">
+            <li class="nav-item">
+              <a class="nav-link text-white bg-secondary border-dark" href="cadastroLocador.php">Cadastrar Locador</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastroLocatario.php">Cadastrar Locatário</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastroImoveis.php">Cadastrar Imóvel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="cadastraContratos.php">Contratos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary bg-white border-dark" href="gerenciaMensalidades.php">Mensalidades</a>
+            </li>
+        </ul>
 
+        
     </div>
+
     
   
 
