@@ -45,14 +45,14 @@
         <legend>Listar Locadores e Locatários</legend>
       
           <div class="container w-auto mt-2">
-            <table class="table table-sm table-responsive table-hover border border-dark p-4">
+            <table class="table table-sm table-responsive table-hover table-bordered border border-dark p-4">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">nome</th>
                   <th scope="col">Profissão</th>
                   <th scope="col">Data de Nascimento</th>
                   <th scope="col">Pessoa</th>
-                  <th scope="col">Editar</th>
+                  <th scope="col">Ver/Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
               </thead>
@@ -63,18 +63,24 @@
                   <td>Proxeneta</td>
                   <td>20/12/2000</td>
                   <td>Locatário</td>
+                  <td>ed</td>
+                  <td>ex</td>
                 </tr>
                 <tr>
                   <th scope="row">Pinóquio de Oliveira</th>
                   <td>Carcereiro</td>
                   <td>26/05/1950</td>
                   <td>Locador</td>
+                  <td>ed</td>
+                  <td>ex</td>
                 </tr>
                 <tr>
                   <th >Pimbolin Alves</th>
                   <td >Enxugador de Gelo</td>
                   <td>12/04/1979</td>
                   <td>Locatário</td>
+                  <td>ed</td>
+                  <td>ex</td>
                 </tr>
               </tbody>
             </table>

@@ -45,7 +45,7 @@
         <legend>Listar Contratos</legend>
       
           <div class="container w-auto mt-2">
-            <table class="table table-sm table-responsive table-hover border border-dark p-4">
+            <table class="table table-sm table-responsive table-hover table-bordered border border-dark p-4">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">Locador</th>
@@ -54,31 +54,27 @@
                   <th scope="col">CPF</th>
                   <th scope="col">Imóvel</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Parcelas</th>
-                  <th scope="col">Editar</th>
+                  <th scope="col">Valor/mês (R$)</th>
+                  <th scope="col">Mensalidades</th>
+                  <th scope="col">Ver/Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Aqui vai código php --->
                 <tr>
-                  <th scope="row">Huguinho da Silva</th>
-                  <td>Proxeneta</td>
-                  <td>20/12/2000</td>
-                  <td>Locatário</td>
+                  <th scope="row">Ariana Dionel Campos</th>
+                  <td>03333222123</td>
+                  <td>Célio Pinto</td>
+                  <td>22111236521</td>
+                  <td>Apto-05</td>
+                  <td>Vigente</td>
+                  <td>1300,00</td>
+                  <td>Editar / Pagar</td>
+                  <td>Ed</td>
+                  <td>Ex</td>
                 </tr>
-                <tr>
-                  <th scope="row">Pinóquio de Oliveira</th>
-                  <td>Carcereiro</td>
-                  <td>26/05/1950</td>
-                  <td>Locador</td>
-                </tr>
-                <tr>
-                  <th >Pimbolin Alves</th>
-                  <td >Enxugador de Gelo</td>
-                  <td>12/04/1979</td>
-                  <td>Locatário</td>
-                </tr>
+                
               </tbody>
             </table>
           </div>

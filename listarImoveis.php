@@ -54,17 +54,21 @@
                   <th scope="col">Área(m²)</th>
                   <th scope="col">Garagem</th>
                   <th scope="col">Designação</th>
-                  <th scope="col">Editar</th>
+                  <th scope="col">Ver/Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Aqui vai código php --->
                 <tr>
-                  <th scope="row">Huguinho da Silva</th>
-                  <td>Proxeneta</td>
-                  <td>20/12/2000</td>
-                  <td>Locatário</td>
+                  <th scope="row">Apartamento</th>
+                  <td>Residencial</td>
+                  <td>2</td>
+                  <td>150</td>
+                  <td>Privativa</td>
+                  <td>Apto-05</td>
+                  <td>ed</td>
+                  <td>ex</td>
                 </tr>
                 <tr>
                   <th scope="row">Pinóquio de Oliveira</th>
