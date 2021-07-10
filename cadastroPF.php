@@ -70,17 +70,21 @@
 
               <!----Linha 2---->
               <div class="row mb-3">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       <label for="">RG</label>
                       <input class="form-control form-control-sm" type="text" name="rg" maxlength="11">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="">CPF</label>
                     <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <label for="">Data de Nascimento</label>
                     <input class="form-control form-control-sm" type="date" name="data_nasc" id="">
+                  </div>
+                  <div class="col-md-4">
+                      <label for="">Email</label>
+                      <input class="form-control form-control-sm" type="email" name="email" >
                   </div>
               </div>
 

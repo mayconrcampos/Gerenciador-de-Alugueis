@@ -1,6 +1,10 @@
 <?php
 
-// Função para escrever valores por extenso
+// Função para escrever valores por extenso, não fui eu que fiz, encontrei-a neste link.
+// https://pt.stackoverflow.com/questions/99460/como-converter-n%c3%bamero-em-float-para-n%c3%bamero-por-extenso-no-php#99477
+// O único ajuste foi substituir as funções ereg_replace, que se encontra obsoleta por preg_replace. 
+// Dentro de preg replace, precisei botar as contra barras no primeiro parâmetro da função, "/ E /" , por se tratar de função que usa regex.
+
 function extenso($valor = 0, $maiusculas = false) {
     if(!$maiusculas){
         $singular = ["centavo", "real", "mil", "milhão", "bilhão", "trilhão", "quatrilhão"];
@@ -57,6 +61,7 @@ function extenso($valor = 0, $maiusculas = false) {
     }
 }
 
+// Função para validar valores monetários float antes de ser inserido no banco de dados.
 
 function valida_float($num){        // função valida float que recebe uma string
     $conta = 0;                     // Variável de controle.
@@ -66,7 +71,7 @@ function valida_float($num){        // função valida float que recebe uma stri
             $conta++;               // Se encontrar o elemento vírgula, incrementa variável $conta.
         }
     }
-    if($conta == 0){                // Se conta for igual a zero ...
+    if($conta == 0){                // Se conta for igual a zero, não tiver vírgula ...
         if(is_numeric($num)){       // Se for inteiro
             $num = (double) $num;   // Transforma essa string em um double
             return $num;            // Retorna este double.
@@ -91,4 +96,9 @@ echo valida_float("1.99")."\n";
 echo valida_float("10")."\n";
 echo valida_float("10,,50")."\n";
 
-
+$teste = valida_float("1355,99");
+if(empty($teste)){
+    echo "deu false.";
+}else{
+    echo extenso($teste);
+}
