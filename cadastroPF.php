@@ -19,7 +19,7 @@
     </header>
     
     <!--- Tab Menu --->
-    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 5px black;">
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">
         <ul class="nav nav-tabs nav-fill w-auto">
             <li class="nav-item">
               <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Pessoa</a>
@@ -50,21 +50,20 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Nome</label>
-                      <input class="form-control form-control-sm" type="text" name="nome" id="" autofocus>
+                      <input class="form-control form-control-sm" type="text" name="nome" id="" autofocus required>
                   </div>
                   <div class="col-md-3">
                     <label for="exampleFormControlSelect1">Estado Civil</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="est_civil">
-                          <option value="Solteiro" selected>Solteiro</option>
-                          <option value="Casado">Casado</option>
-                          <option value="Divorciado">Divorciado</option>
-                          <option value="Viúvo">Viúvo</option>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="est_civil" required>
+                          <option value="Solteiro(a)" selected>Solteiro(a)</option>
+                          <option value="Casado(a)">Casado(a)</option>
+                          <option value="Divorciado(a)">Divorciado(a)</option>
+                          <option value="Viúvo(a)">Viúvo(a)</option>
                         </select>
                   </div>
                   <div class="col-md-3">
                     <label for="">Profissão</label>
-                    <input class="form-control form-control-sm" type="text" name="profissao" size="20" maxlength="127">
-                      
+                    <input class="form-control form-control-sm" type="text" name="profissao" maxlength="127" required>
                   </div>
               </div>
 
@@ -72,19 +71,19 @@
               <div class="row mb-3">
                   <div class="col-md-3">
                       <label for="">RG</label>
-                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11">
+                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11" required>
                   </div>
                   <div class="col-md-3">
                     <label for="">CPF</label>
-                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14">
+                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Data de Nascimento</label>
-                    <input class="form-control form-control-sm" type="date" name="data_nasc" id="">
+                    <input class="form-control form-control-sm" type="date" name="data_nasc" id="" required>
                   </div>
                   <div class="col-md-4">
                       <label for="">Email</label>
-                      <input class="form-control form-control-sm" type="email" name="email" >
+                      <input class="form-control form-control-sm" type="email" name="email" required>
                   </div>
               </div>
 
@@ -92,7 +91,7 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Logradouro</label>
-                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127">
+                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Número</label>
@@ -108,15 +107,15 @@
               <div class="row mb-3">
                   <div class="col-md-5">
                       <label for="">Bairro</label>
-                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127">
+                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" required>
                   </div>
                   <div class="col-md-5">
                     <label for="">Cidade</label>
-                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127">
+                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">CEP</label>
-                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9">
+                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" required>
                   </div>
               </div>
               <fieldset class="container border">

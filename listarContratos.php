@@ -18,7 +18,7 @@
       </nav>
     </header>
     <!---Tab Menu--->
-    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 5px black;">
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">
         <ul class="nav nav-tabs nav-fill w-auto">
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroPF.php">Cadastrar Pessoa</a>

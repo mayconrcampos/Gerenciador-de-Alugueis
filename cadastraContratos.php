@@ -19,7 +19,7 @@
       </nav>
     </header>
     <!--- Tab Menu --->
-    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 5px black;">
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">
         <ul class="nav nav-tabs nav-fill w-auto">
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="cadastroPF.php">Cadastrar Pessoa</a>
@@ -40,6 +40,42 @@
               <a class="nav-link text-secondary bg-white border-dark" href="listarContratos.php">Listar Contratos</a>
             </li>
         </ul>
+
+        <!----Tabela para escolher locador---->
+        <div class="container">
+          <fieldset>
+            <legend>Cadastro de Contrato</legend>
+            <form class="form-group border border-dark p-4 rounded" action="" method="post">
+              <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="exampleFormControlSelect1">Escolha o Locador</label>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locador">
+                              <option value="id_locador" selected>Lista de Locadores</option> 
+                              <option value="3">Joaozinho</option>
+                              <option value="4">Mariazinha de Almeida</option>
+                        </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="exampleFormControlSelect1">Escolha o Locatário</label>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locatario">
+                              <option value="id_locatario" selected>Lista de Locatários</option> 
+                        </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="exampleFormControlSelect1">Escolha o Imóvel</label>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="est_civil">
+                              <option value="id_imóvel" selected>Lista de Imóveis</option> 
+                        </select>
+                </div>
+              </div>
+              <input type="submit" class="btn btn-primary mt-3" value="Fechar Contrato">
+            </form>
+          </fieldset>
+        </div>
+        <?php
+          $locador = $_POST['locador'];
+          echo "Locador: ".$locador;
+        ?>
 
     
   

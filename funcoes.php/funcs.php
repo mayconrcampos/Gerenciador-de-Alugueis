@@ -96,7 +96,7 @@ echo valida_float("1.99")."\n";
 echo valida_float("10")."\n";
 echo valida_float("10,,50")."\n";
 
-$teste = valida_float("1355,99");
+$teste = valida_float("3300");
 if(empty($teste)){
     echo "deu false.";
 }else{
