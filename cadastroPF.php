@@ -19,8 +19,8 @@
     </header>
     
     <!--- Tab Menu --->
-    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded">
-        <ul class="nav nav-tabs w-auto">
+    <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 5px black;">
+        <ul class="nav nav-tabs nav-fill w-auto">
             <li class="nav-item">
               <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Pessoa</a>
             </li>
