@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -79,6 +83,7 @@
             </table>
           </div>
       </fieldset>
+      <p class="alert alert-primary text-center"><?php if($_SESSION['msg']); echo $_SESSION['msg']; unset($_SESSION['msg']); ?></p>
     </div>
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021

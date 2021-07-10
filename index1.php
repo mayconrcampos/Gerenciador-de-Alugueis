@@ -1,7 +1,6 @@
 <?php
-  session_start();
+    session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,8 +23,8 @@
     </header>
   
 
-    <form action="./funcoes/loginUsuario.php" method="post">
-      <h1>Faça o Login</h1>
+    <form action="./funcoes/insereUsuario.php" method="post">
+      <h1>Faça seu Cadastro</h1>
       <div class="formcontainer">
       <hr/>
       <div class="container">
@@ -33,16 +32,17 @@
         <input type="text" placeholder="Digite seu usuário" name="usuario" required>
         <label for="psw"><strong>Senha</strong></label>
         <input type="password" placeholder="Digite sua senha" name="senha" required>
+        <label for="psw"><strong>Repete a Senha</strong></label>
+        <input type="password" placeholder="Digite sua senha" name="senha2" required>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Cadastrar</button>
       <br>
-      <p class="alert alert-danger">Não é cadastrado? <a href="index1.php"> Clique aqui para criar uma conta</a></p>
-
       <?php
         if(!empty($_SESSION['sucesso'])){?>
             <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
  <?php  } ?>
+      
     </form>
 
 

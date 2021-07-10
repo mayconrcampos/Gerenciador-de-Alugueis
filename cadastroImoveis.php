@@ -82,8 +82,8 @@
                   <div class="col-md-2">
                     <label for="">Garagem</label>
                           <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="garagem">
-                            <option value="Comercial" selected>Privativa</option>
-                            <option value="Residencial">Rotativa</option>
+                            <option value="Privativa" selected>Privativa</option>
+                            <option value="Rotativa">Rotativa</option>
                           </select>
                   </div>
                   <div class="col-md-5">
@@ -96,15 +96,15 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Logradouro</label>
-                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127">
+                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" placeholder="Digite o endereço">
                   </div>
                   <div class="col-md-2">
                     <label for="">Número</label>
-                    <input class="form-control form-control-sm" type="text" name="numero" maxlength="5">
+                    <input class="form-control form-control-sm" type="number" name="numero" maxlength="5" placeholder="Digite o número">
                   </div>
                   <div class="col-md-4">
                     <label for="">Complemento</label>
-                    <input class="form-control form-control-sm" type="text" name="complemento" id="">
+                    <input class="form-control form-control-sm" type="text" name="complemento" placeholder="Digite o complemento">
                   </div>
               </div>
 
@@ -112,11 +112,11 @@
               <div class="row mb-3">
                   <div class="col-md-5">
                       <label for="">Bairro</label>
-                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127">
+                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" placeholder="Digite o bairro">
                   </div>
                   <div class="col-md-5">
                     <label for="">Cidade</label>
-                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127">
+                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" placeholder="Digite a cidade">
                   </div>
                   <div class="col-md-2">
                     <label for="">CEP</label>

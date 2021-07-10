@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -54,6 +56,7 @@
                   <th scope="col">Área(m²)</th>
                   <th scope="col">Garagem</th>
                   <th scope="col">Designação</th>
+                  <th scope="col">Alugado</th>
                   <th scope="col">Ver/Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
@@ -67,6 +70,7 @@
                   <td>150</td>
                   <td>Privativa</td>
                   <td>Apto-05</td>
+                  <td>Sim</td>
                   <td>ed</td>
                   <td>ex</td>
                 </tr>
@@ -90,6 +94,8 @@
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021
     </footer>
+
+ 
 
     
   

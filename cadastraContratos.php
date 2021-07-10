@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -45,12 +46,12 @@
         <div class="container">
           <fieldset>
             <legend>Cadastro de Contrato</legend>
-            <form class="form-group border border-dark p-4 rounded" action="" method="post">
+            <form class="form-group border border-dark p-4 rounded" action="./funcoes/cadastraContratoDB.php" method="post">
               <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="exampleFormControlSelect1">Escolha o Locador</label>
                         <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locador">
-                              <option value="id_locador" selected>Lista de Locadores</option> 
+                              <option selected>Lista de Locadores</option> 
                               <option value="3">Joaozinho</option>
                               <option value="4">Mariazinha de Almeida</option>
                         </select>
@@ -58,13 +59,17 @@
                 <div class="col-md-4">
                     <label for="exampleFormControlSelect1">Escolha o Locatário</label>
                         <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locatario">
-                              <option value="id_locatario" selected>Lista de Locatários</option> 
+                              <option selected>Lista de Locatários</option> 
+                              <option value="2">Joaozinho</option>
+                              <option value="3">Mariazinha de Almeida</option>
                         </select>
                 </div>
                 <div class="col-md-4">
                     <label for="exampleFormControlSelect1">Escolha o Imóvel</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="est_civil">
-                              <option value="id_imóvel" selected>Lista de Imóveis</option> 
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="imovel">
+                              <option selected>Lista de Imóveis</option> 
+                              <option value="1">Joaozinho</option>
+                              <option value="2">Mariazinha de Almeida</option>
                         </select>
                 </div>
               </div>
@@ -72,10 +77,6 @@
             </form>
           </fieldset>
         </div>
-        <?php
-          $locador = $_POST['locador'];
-          echo "Locador: ".$locador;
-        ?>
 
     
   
