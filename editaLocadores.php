@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once("./funcoes/db.php");
 
   if($_SESSION['logado']){
     $iduser = $_SESSION['iduser'];
@@ -8,6 +9,26 @@
     $_SESSION["logado"] = "Você não está logado no sistema.";
     header("Location: index.php");
   }
+
+  $idregistro = $_GET['id'];
+
+  $queryID = mysqli_query($conn, "SELECT 
+                            id, 
+                            nome, 
+                            est_civil, 
+                            profissao, 
+                            rg, 
+                            cpf, 
+                            data_nasc, 
+                            email, 
+                            logradouro, 
+                            numero,
+                            complemento,
+                            bairro,
+                            cidade,
+                            cep,
+                            locat FROM locats WHERE id='$idregistro'");
+    $resultado = mysqli_fetch_assoc($queryID);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +37,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Aluguéis - Login</title>
+    <title>Gerenciador de Aluguéis</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="./css/style2.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -35,7 +56,7 @@
     <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">
         <ul class="nav nav-tabs nav-fill w-auto">
             <li class="nav-item">
-              <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Pessoa</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Editar Pessoa</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
@@ -56,14 +77,14 @@
 
         <!---Formulário de Cadastro de Locador --->
         <fieldset>
-        <legend>Cadastro de Pessoa Física</legend>
+        <legend>Editar Cadastro</legend>
         <div class="container w-auto mt-2">
-            <form class="form-group border border-dark p-4 rounded" action="./funcoes/cadastroPF_DB.php" method="post">
+            <form class="form-group border border-dark p-4 rounded" action="./funcoes/editaLocadoresDB.php" method="post">
               <!----Linha 1---->
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Nome</label>
-                      <input class="form-control form-control-sm" type="text" name="nome" id="" autofocus required>
+                      <input class="form-control form-control-sm" type="text" name="nome" value="<?php echo $resultado['nome'] ?>" autofocus required>
                   </div>
                   <div class="col-md-3">
                     <label for="exampleFormControlSelect1">Estado Civil</label>
@@ -72,11 +93,12 @@
                           <option value="Casado(a)">Casado(a)</option>
                           <option value="Divorciado(a)">Divorciado(a)</option>
                           <option value="Viúvo(a)">Viúvo(a)</option>
+                          <option value="<?php echo $resultado['est_civil'] ?>" selected><?php echo $resultado['est_civil'] ?></option>
                         </select>
                   </div>
                   <div class="col-md-3">
                     <label for="">Profissão</label>
-                    <input class="form-control form-control-sm" type="text" name="profissao" maxlength="127" required>
+                    <input class="form-control form-control-sm" type="text" name="profissao" value="<?php echo $resultado['profissao'] ?>" maxlength="127" required>
                   </div>
               </div>
 
@@ -84,19 +106,19 @@
               <div class="row mb-3">
                   <div class="col-md-3">
                       <label for="">RG</label>
-                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11" required>
+                      <input class="form-control form-control-sm" type="text" name="rg" value="<?php echo $resultado['rg'] ?>" maxlength="11" required>
                   </div>
                   <div class="col-md-3">
                     <label for="">CPF</label>
-                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14" required>
+                    <input class="form-control form-control-sm" type="text" name="cpf" value="<?php echo $resultado['cpf'] ?>" maxlength="14" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Data de Nascimento</label>
-                    <input class="form-control form-control-sm" type="date" name="data_nasc" id="" required>
+                    <input class="form-control form-control-sm" type="date" name="data_nasc" value="<?php echo $resultado['data_nasc'] ?>" id="" required>
                   </div>
                   <div class="col-md-4">
                       <label for="">Email</label>
-                      <input class="form-control form-control-sm" type="email" name="email" required>
+                      <input class="form-control form-control-sm" type="email" name="email" value="<?php echo $resultado['email'] ?>" required>
                   </div>
               </div>
 
@@ -104,15 +126,15 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Logradouro</label>
-                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" required>
+                      <input class="form-control form-control-sm" type="text" name="logradouro" value="<?php echo $resultado['logradouro'] ?>" maxlength="127" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Número</label>
-                    <input class="form-control form-control-sm" type="text" name="numero" maxlength="5">
+                    <input class="form-control form-control-sm" type="text" name="numero" value="<?php echo $resultado['numero'] ?>" maxlength="5">
                   </div>
                   <div class="col-md-4">
                     <label for="">Complemento</label>
-                    <input class="form-control form-control-sm" type="text" name="complemento" id="">
+                    <input class="form-control form-control-sm" type="text" name="complemento" value="<?php echo $resultado['complemento'] ?>" id="">
                   </div>
               </div>
 
@@ -120,29 +142,32 @@
               <div class="row mb-3">
                   <div class="col-md-5">
                       <label for="">Bairro</label>
-                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" required>
+                      <input class="form-control form-control-sm" type="text" name="bairro" value="<?php echo $resultado['bairro'] ?>" maxlength="127" required>
                   </div>
                   <div class="col-md-5">
                     <label for="">Cidade</label>
-                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" required>
+                    <input class="form-control form-control-sm" type="text" name="cidade" value="<?php echo $resultado['cidade'] ?>" maxlength="127" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">CEP</label>
-                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" required>
+                    <input class="form-control form-control-sm" type="text" name="cep" value="<?php echo $resultado['cep'] ?>" maxlength="9" required>
                   </div>
               </div>
               <fieldset class="container border">
               <legend>Selecione</legend>
               <div class="custom-control custom-radio">
-                  <input type="radio" id="customRadio1" name="locat" value="Locador" class="custom-control-input" checked>
+                  <?php $loc = ($resultado['locat'] == "Locador" ? "checked" : "");
+                        $loc2 = ($resultado['locat'] == "Locatário" ? "checked" : "");
+                  ?>
+                  <input type="radio" id="customRadio1" name="locat" value="Locador" class="custom-control-input" <?php echo $loc; ?>>
                   <label class="custom-control-label" for="customRadio1">Locador</label>
               </div>
               <div class="custom-control custom-radio">
-                  <input type="radio" id="customRadio2" name="locat" value="Locatário" class="custom-control-input">
+                  <input type="radio" id="customRadio2" name="locat" value="Locatário" class="custom-control-input" <?php echo $loc2; ?>>
                   <label class="custom-control-label" for="customRadio2">Locatário</label>                
               </div>
               </fieldset>
-
+                <input type="hidden" value="<?php echo $idregistro; ?>" name="id">
               <input type="submit" class="btn btn-primary mt-3" value="Cadastrar">
             </form>
         </div>

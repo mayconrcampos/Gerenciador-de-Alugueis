@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once("./funcoes/db.php");
 
   if($_SESSION['logado']){
     $iduser = $_SESSION['iduser'];
@@ -59,10 +60,11 @@
         <legend>Listar Locadores e Locatários</legend>
       
           <div class="container w-auto mt-2">
-            <table class="table table-sm table-responsive table-hover table-bordered border border-dark p-4">
+            <table class="table table-responsive table-hover table-bordered border border-dark rounded p-4">
               <thead class="thead-light">
                 <tr>
                   <th scope="col">nome</th>
+                  <th scope="col">CPF</th>
                   <th scope="col">Profissão</th>
                   <th scope="col">Data de Nascimento</th>
                   <th scope="col">Pessoa</th>
@@ -71,36 +73,34 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Aqui vai código php --->
-                <tr>
-                  <th scope="row">Huguinho da Silva</th>
-                  <td>Proxeneta</td>
-                  <td>20/12/2000</td>
-                  <td>Locatário</td>
-                  <td>ed</td>
-                  <td>ex</td>
-                </tr>
-                <tr>
-                  <th scope="row">Pinóquio de Oliveira</th>
-                  <td>Carcereiro</td>
-                  <td>26/05/1950</td>
-                  <td>Locador</td>
-                  <td>ed</td>
-                  <td>ex</td>
-                </tr>
-                <tr>
-                  <th >Pimbolin Alves</th>
-                  <td >Enxugador de Gelo</td>
-                  <td>12/04/1979</td>
-                  <td>Locatário</td>
-                  <td>ed</td>
-                  <td>ex</td>
-                </tr>
+                <?php 
+                  $queryLocats = mysqli_query($conn, "SELECT id, nome, profissao, cpf, DATE_FORMAT(data_nasc, '%d/%m/%Y') as data_nasc, locat FROM locats ORDER BY nome ASC");
+                  while($resultLocats = mysqli_fetch_assoc($queryLocats)){
+                ?>
+                    <tr>
+                      <th scope="row"><?php echo $resultLocats['nome'] ?></th>
+                      <td><?php echo $resultLocats['cpf'] ?></td>
+                      <td><?php echo $resultLocats['profissao'] ?></td>
+                      <td><?php echo $resultLocats['data_nasc'] ?></td>
+                      <td><?php echo $resultLocats['locat'] ?></td>
+                      <td><a href="editaLocadores.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/pencil-fill.svg" width="20px"></a></td>
+                      <td><a href="./funcoes/deletaPessoa.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/trash-fill.svg" width="20" onclick="return confirm('Você confirma a exclusão deste registro?')"></a></td>
+                    </tr>
+            <?php } ?>
+                
               </tbody>
             </table>
           </div>
       </fieldset>
     </div>
+    <?php if(!empty($_SESSION['sucesso'])){?>
+                  <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
+            <?php unset($_SESSION['sucesso']); ?>
+            <?php  } ?>
+    <?php if(!empty($_SESSION['existe'])){?>
+                  <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
+            <?php unset($_SESSION['existe']); ?>
+            <?php  } ?>
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021
     </footer>
