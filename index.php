@@ -24,7 +24,7 @@
     </header>
   
 
-    <form action="./funcoes/loginUsuario.php" method="post">
+    <form action="./funcoes/usuarioLogin.php" method="post">
       <h1>Faça o Login</h1>
       <div class="formcontainer">
       <hr/>
@@ -38,10 +38,20 @@
       <br>
       <p class="alert alert-danger">Não é cadastrado? <a href="index1.php"> Clique aqui para criar uma conta</a></p>
 
-      <?php
-        if(!empty($_SESSION['sucesso'])){?>
+  <?php if(!empty($_SESSION['sucesso'])){?>
             <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
+<?php   } ?>
+
+  <?php if(!empty($_SESSION['login'])){?>
+            <p class="alert alert-danger"><?php echo $_SESSION['login'];  ?></p> 
+            <?php unset($_SESSION['login']); ?>
+
+ <?php  } ?>
+ <?php if(!empty($_SESSION['existe'])){?>
+            <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
+            <?php unset($_SESSION['existe']); ?>
+
  <?php  } ?>
     </form>
 

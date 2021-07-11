@@ -90,15 +90,151 @@ function valida_float($num){        // função valida float que recebe uma stri
     }
 }
 
-echo valida_float("1,5,")."\n";
-echo valida_float("1,5")."\n";
-echo valida_float("1.99")."\n";
-echo valida_float("10")."\n";
-echo valida_float("10,,50")."\n";
 
-$teste = valida_float("3300");
-if(empty($teste)){
-    echo "deu false.";
-}else{
-    echo extenso($teste);
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../phpmailer/src/Exception.php';
+    require '../phpmailer/src/PHPMailer.php';
+    require '../phpmailer/src/SMTP.php';
+    require "../vendor/autoload.php";
+
+function sendEmail($user){
+    
+
+    $Mailer = new PHPMailer();
+
+    // Definir SMTP para utilizar;
+    $Mailer->isSMTP();
+
+    // Definir codificação <UTF-8>
+    $Mailer->CharSet = "UTF-8";
+    // Traduzir para pt-BR;
+    $Mailer->setLanguage("br");
+
+    //Configurar SMTP
+    $Mailer->SMTPAuth = true;
+
+    // Seta para usar ssl - segurança
+    //$Mailer->SMTPSecure = "ssl";
+    // Seta para usar tls, exigido pelo gmail.
+    $Mailer->SMTPSecure = 'tls';
+
+    // Nome do servidor
+    // Email de servidor hostgator ou outro.
+    //$Mailer->Host = "br160.hostgator.com.br";
+    // Email do Gmail
+    $Mailer->Host = "smtp.gmail.com";
+
+    // Username
+    $Mailer->Username = "maycon.campos@gmail.com";
+    // Senha
+    $Mailer->Password = "J=m0I+o.x\$Z3(vx";
+    // Porta gmail;
+    $Mailer->Port = 587;
+    // Porta de saída de e-mail de servidores;
+    //$Mailer->Port = 465;
+
+    // Email e nome de quem envia o email
+    $Mailer->setFrom("maycon.campos@gmail.com", "Aplicativo de Controle Financeiro");
+
+    // Email e nome de quem responde o email
+    $Mailer->addReplyTo("maycon.campos@gmail.com", "Maycon");
+
+    // Email destino
+    $Mailer->addAddress("$user", "Aplicativo de Gerenciamento de Aluguéis");
+
+    // Seta o envio em HTML
+    $Mailer->isHTML(true);
+
+    // Título da mensagem
+    $Mailer->Subject = "Ativação de conta!";
+
+    // Corpo da mensagem
+    $Mailer->Body = "<h1>Ative já sua conta para obter acesso ao Gerenciador de Imóveis.</h1><a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$user."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+
+    // Mensagem alternativa
+    $Mailer->AltBody = "Tenha o controle total de suas contas.";
+
+    // envia email
+    $envia = $Mailer->send();
+
+    if($envia){
+        $_SESSION['email'] = "<br>Email enviado com sucesso<br>. Favor verificar sua caixa de email.";
+        header("Location: ../index.php");
+    }else{
+        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/18%20-%20CRUD/email.php?usuario=".$user."'>Clique aqui pra reenviar email.</a>";
+        header("Location: ../index.php");
+
+    }
 }
+
+/// Função de mandar email via GET
+    $Mailer = new PHPMailer();
+
+    // Definir SMTP para utilizar;
+    $Mailer->isSMTP();
+
+    // Definir codificação <UTF-8>
+    $Mailer->CharSet = "UTF-8";
+    // Traduzir para pt-BR;
+    $Mailer->setLanguage("br");
+
+    //Configurar SMTP
+    $Mailer->SMTPAuth = true;
+
+    // Seta para usar ssl - segurança
+    //$Mailer->SMTPSecure = "ssl";
+    // Seta para usar tls, exigido pelo gmail.
+    $Mailer->SMTPSecure = 'tls';
+
+    // Nome do servidor
+    // Email de servidor hostgator ou outro.
+    //$Mailer->Host = "br160.hostgator.com.br";
+    // Email do Gmail
+    $Mailer->Host = "smtp.gmail.com";
+
+    // Username
+    $Mailer->Username = "maycon.campos@gmail.com";
+    // Senha
+    $Mailer->Password = "J=m0I+o.x\$Z3(vx";
+    // Porta gmail;
+    $Mailer->Port = 587;
+    // Porta de saída de e-mail de servidores;
+    //$Mailer->Port = 465;
+
+    // Email e nome de quem envia o email
+    $Mailer->setFrom("maycon.campos@gmail.com", "Maycon R. Campos");
+
+    // Email e nome de quem responde o email
+    $Mailer->addReplyTo("maycon.campos@gmail.com", "Maycon");
+
+    // Email destino
+    $Mailer->addAddress($_GET['usuario'], "Sistema de Cadastro de Clientes");
+
+    // Seta o envio em HTML
+    $Mailer->isHTML(true);
+
+    // Título da mensagem
+    $Mailer->Subject = "Confirmação da conta";
+
+    // Corpo da mensagem
+    $Mailer->Body = "<h1>Ative já sua conta e tenha total controle sobre sua vida financeira</h1><a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+
+    // Mensagem alternativa
+    $Mailer->AltBody = "Controlando todos seus clientes.";
+
+    // envia email
+    $envia = $Mailer->send();
+
+    if($envia){
+        $_SESSION['email'] = "<br>Mensagem enviada com sucesso<br>. Verificar sua caixa de email.";
+        header("Location: ../index.php");
+    }else{
+        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+        header("Location: ../index.php");
+
+    }
+
+
+
