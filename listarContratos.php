@@ -1,6 +1,14 @@
 <?php
   session_start();
-?>
+
+  if($_SESSION['logado']){
+    $iduser = $_SESSION['iduser'];
+    $user = $_SESSION['user'];
+  }else{
+    $_SESSION["logado"] = "Você não está logado no sistema.";
+    header("Location: index.php");
+  }
+?>  
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,11 +24,12 @@
 
 
 <body>
-<header>
+    <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-secondary align-items-center">
         <a class="navbar-brand mx-auto text-center" href="#"><img class="rounded img-fluid" src="./css/Banner - For Rent.png" width="850px"></a>
       </nav>
     </header>
+    <h6 class="text text-primary" style="text-align: left;">Usuário: <?php echo $user; ?> <a href="./funcoes/sair.php">Sair</a></h6>
     <!---Tab Menu--->
     <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">
         <ul class="nav nav-tabs nav-fill w-auto">
@@ -83,7 +92,10 @@
             </table>
           </div>
       </fieldset>
-      <p class="alert alert-primary text-center"><?php if($_SESSION['msg']); echo $_SESSION['msg']; unset($_SESSION['msg']); ?></p>
+      <?php if($_SESSION['msg']){?>
+          <p class="alert alert-primary text-center"><?php echo $_SESSION['msg'];?></p>
+      <?php unset($_SESSION['msg']); ?>
+    <?php   }?>
     </div>
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021

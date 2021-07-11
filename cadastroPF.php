@@ -1,3 +1,15 @@
+<?php
+  session_start();
+
+  if($_SESSION['logado']){
+    $iduser = $_SESSION['iduser'];
+    $user = $_SESSION['user'];
+  }else{
+    $_SESSION["logado"] = "Você não está logado no sistema.";
+    header("Location: index.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,6 +29,7 @@
         <a class="navbar-brand mx-auto text-center" href="#"><img class="rounded img-fluid" src="./css/Banner - For Rent.png" width="850px"></a>
       </nav>
     </header>
+    <h6 class="text text-primary" style="text-align: left;">Usuário: <?php echo $user; ?> <a href="./funcoes/sair.php">Sair</a></h6>
     
     <!--- Tab Menu --->
     <div class="container w-auto text-dark bg-white border border-dark p-1 rounded" style="box-shadow: 2px 2px 25px black;">

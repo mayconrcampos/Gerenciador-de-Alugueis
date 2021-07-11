@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Função para escrever valores por extenso, não fui eu que fiz, encontrei-a neste link.
 // https://pt.stackoverflow.com/questions/99460/como-converter-n%c3%bamero-em-float-para-n%c3%bamero-por-extenso-no-php#99477
@@ -151,7 +152,7 @@ function sendEmail($user){
     $Mailer->Subject = "Ativação de conta!";
 
     // Corpo da mensagem
-    $Mailer->Body = "<h1>Ative já sua conta para obter acesso ao Gerenciador de Imóveis.</h1><a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$user."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+    $Mailer->Body = "<h1>Ative já sua conta para obter acesso ao Gerenciador de Imóveis.</h1><a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$user."'>Clique aqui pra confirmar sua conta no Sistema de Administração de Aluguéis</a>";
 
     // Mensagem alternativa
     $Mailer->AltBody = "Tenha o controle total de suas contas.";
@@ -163,7 +164,7 @@ function sendEmail($user){
         $_SESSION['email'] = "<br>Email enviado com sucesso<br>. Favor verificar sua caixa de email.";
         header("Location: ../index.php");
     }else{
-        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/18%20-%20CRUD/email.php?usuario=".$user."'>Clique aqui pra reenviar email.</a>";
+        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$user."'>Clique aqui pra reenviar email.</a>";
         header("Location: ../index.php");
 
     }
@@ -219,7 +220,7 @@ function sendEmail($user){
     $Mailer->Subject = "Confirmação da conta";
 
     // Corpo da mensagem
-    $Mailer->Body = "<h1>Ative já sua conta e tenha total controle sobre sua vida financeira</h1><a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+    $Mailer->Body = "<h1>Ative já sua conta e tenha accesso ao Programa de Administração de Contratos de Aluguéis.</h1><a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Administração de Aluguéis</a>";
 
     // Mensagem alternativa
     $Mailer->AltBody = "Controlando todos seus clientes.";
@@ -228,10 +229,10 @@ function sendEmail($user){
     $envia = $Mailer->send();
 
     if($envia){
-        $_SESSION['email'] = "<br>Mensagem enviada com sucesso<br>. Verificar sua caixa de email.";
+        $_SESSION['sucesso'] = "<br>Mensagem enviada com sucesso para ".$_GET['usuario']."<br>. Verificar sua caixa de email.";
         header("Location: ../index.php");
     }else{
-        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/celkePHP/02%20-%20MySQLi%20e%20PHP/Controle%20de%20Financas/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+        $_SESSION['sucesso'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
         header("Location: ../index.php");
 
     }

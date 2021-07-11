@@ -23,36 +23,49 @@
       </nav>
     </header>
   
+    <form class="form-group p-5 border border-dark rounded" action="./funcoes/usuarioLogin.php" method="POST">
 
-    <form action="./funcoes/usuarioLogin.php" method="post">
-      <h1>Faça o Login</h1>
-      <div class="formcontainer">
-      <hr/>
-      <div class="container">
-        <label for="uname"><strong>Usuário</strong></label>
-        <input type="text" placeholder="Digite seu usuário" name="usuario" required>
-        <label for="psw"><strong>Senha</strong></label>
-        <input type="password" placeholder="Digite sua senha" name="senha" required>
-      </div>
-      <button type="submit">Login</button>
-      <br>
-      <p class="alert alert-danger">Não é cadastrado? <a href="index1.php"> Clique aqui para criar uma conta</a></p>
+             <div class="form-group p-1">
+               <label for="exampleInputEmail1">Email</label>
+               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email" name="usuario">
+               <small id="emailHelp" class="form-text text-muted">Insira seu email.</small>
+             </div>
 
-  <?php if(!empty($_SESSION['sucesso'])){?>
-            <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
+             <div class="form-group p-1">
+               <label for="exampleInputPassword1">Senha</label>
+               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite uma senha forte" name="senha">
+             </div>
+             
+             
+             <button type="submit" class="btn btn-primary btn-lg">Fazer Login</button>
+             <br>
+              <p class="alert alert-danger">Não é cadastrado? <a href="index1.php"> Clique aqui para criar uma conta</a></p>  
+
+            <?php if(!empty($_SESSION['sucesso'])){?>
+                  <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
-<?php   } ?>
+            <?php  } ?>
 
-  <?php if(!empty($_SESSION['login'])){?>
+            <?php if(!empty($_SESSION['login'])){?>
             <p class="alert alert-danger"><?php echo $_SESSION['login'];  ?></p> 
             <?php unset($_SESSION['login']); ?>
 
- <?php  } ?>
- <?php if(!empty($_SESSION['existe'])){?>
-            <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
+            <?php  } ?>
+            <?php if(!empty($_SESSION['existe'])){?>
+              <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
             <?php unset($_SESSION['existe']); ?>
 
- <?php  } ?>
+            <?php  } ?>
+            <?php if(!empty($_SESSION['logado'])){?>
+              <p class="alert alert-danger"><?php echo $_SESSION['logado'];  ?></p> 
+            <?php unset($_SESSION['logado']); ?>
+
+            <?php  } ?>
+            <?php if(!empty($_SESSION['ativado'])){?>
+              <p class="alert alert-danger"><?php echo $_SESSION['ativado'];  ?></p> 
+            <?php unset($_SESSION['ativado']); ?>
+
+            <?php  } ?>
     </form>
 
 

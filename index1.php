@@ -23,22 +23,24 @@
     </header>
   
 
-    <form class="form-group" action="./funcoes/insereUsuario.php" method="POST">
-             <div class="form-group form-group-sm p-1">
+    <form class="form-group p-5 border border-dark rounded" action="./funcoes/insereUsuario.php" method="POST">
+             <div class="form-group p-1">
                <label for="exampleInputEmail1">Email</label>
-               <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email" name="usuario">
+               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu email" name="usuario">
                <small id="emailHelp" class="form-text text-muted">Insira seu melhor email.</small>
              </div>
              <div class="form-group form-group-sm p-1">
                <label for="exampleInputPassword1">Senha</label>
-               <input type="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Digite uma senha forte" name="senha">
+               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite uma senha forte" name="senha">
              </div>
              <div class="form-group form-group-sm p-1">
                <label for="exampleInputPassword1">Confirma Senha</label>
-               <input type="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="Repita a senha forte" name='senha1'>
+               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita a senha forte" name='senha1'>
              </div>
              
-             <button type="submit" class="btn btn-primary">Cadastrar</button>
+             <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+             <br>
+              <p class="alert alert-primary text-center"><a href="index.php">Retornar a tela de login</a></p>  
 
       
       <?php
@@ -50,6 +52,11 @@
         if(!empty($_SESSION['senha'])){?>
             <p class="alert alert-danger"><?php echo $_SESSION['senha'];  ?></p> 
             <?php unset($_SESSION['senha']); ?>
+ <?php  } ?>
+ <?php
+        if(!empty($_SESSION['existe'])){?>
+            <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
+            <?php unset($_SESSION['existe']); ?>
  <?php  } ?>
     </form>
 
