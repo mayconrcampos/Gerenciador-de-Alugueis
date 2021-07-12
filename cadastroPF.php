@@ -63,7 +63,7 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Nome</label>
-                      <input class="form-control form-control-sm" type="text" name="nome" id="" autofocus required>
+                      <input class="form-control form-control-sm" type="text" name="nome" placeholder="Digite o nome" autofocus required>
                   </div>
                   <div class="col-md-3">
                     <label for="exampleFormControlSelect1">Estado Civil</label>
@@ -76,7 +76,7 @@
                   </div>
                   <div class="col-md-3">
                     <label for="">Profissão</label>
-                    <input class="form-control form-control-sm" type="text" name="profissao" maxlength="127" required>
+                    <input class="form-control form-control-sm" type="text" name="profissao" placeholder="Digite a profissão" maxlength="127" required>
                   </div>
               </div>
 
@@ -84,19 +84,19 @@
               <div class="row mb-3">
                   <div class="col-md-3">
                       <label for="">RG</label>
-                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11" required>
+                      <input class="form-control form-control-sm" type="text" name="rg" maxlength="11" placeholder="Digite o RG ou CNH" required>
                   </div>
                   <div class="col-md-3">
                     <label for="">CPF</label>
-                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14" required>
+                    <input class="form-control form-control-sm" type="text" name="cpf" maxlength="14" placeholder="Digite o CPF" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Data de Nascimento</label>
-                    <input class="form-control form-control-sm" type="date" name="data_nasc" id="" required>
+                    <input class="form-control form-control-sm" type="date" name="data_nasc" required>
                   </div>
                   <div class="col-md-4">
                       <label for="">Email</label>
-                      <input class="form-control form-control-sm" type="email" name="email" required>
+                      <input class="form-control form-control-sm" type="email" name="email" placeholder="Digite o Email" required>
                   </div>
               </div>
 
@@ -104,7 +104,7 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Logradouro</label>
-                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" required>
+                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" placeholder="Digite o Logradouro" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">Número</label>
@@ -112,7 +112,7 @@
                   </div>
                   <div class="col-md-4">
                     <label for="">Complemento</label>
-                    <input class="form-control form-control-sm" type="text" name="complemento" id="">
+                    <input class="form-control form-control-sm" type="text" name="complemento" placeholder="Digite o complemento">
                   </div>
               </div>
 
@@ -120,15 +120,15 @@
               <div class="row mb-3">
                   <div class="col-md-5">
                       <label for="">Bairro</label>
-                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" required>
+                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" placeholder="Digite o bairro" required>
                   </div>
                   <div class="col-md-5">
                     <label for="">Cidade</label>
-                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" required>
+                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" placeholder="Digite a cidade" required>
                   </div>
                   <div class="col-md-2">
                     <label for="">CEP</label>
-                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" required>
+                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" placeholder="00000-000" required>
                   </div>
               </div>
               <fieldset class="container border">
@@ -156,7 +156,7 @@
                   <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
   <?php  } ?>
-  
+    <br><br>
 
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021

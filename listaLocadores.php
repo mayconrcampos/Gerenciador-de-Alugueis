@@ -83,8 +83,8 @@
                       <td><?php echo $resultLocats['profissao'] ?></td>
                       <td><?php echo $resultLocats['data_nasc'] ?></td>
                       <td><?php echo $resultLocats['locat'] ?></td>
-                      <td><a href="editaLocadores.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/pencil-fill.svg" width="20px"></a></td>
-                      <td><a href="./funcoes/deletaPessoa.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/trash-fill.svg" width="20" onclick="return confirm('Você confirma a exclusão deste registro?')"></a></td>
+                      <td class="text-center"><a href="editaLocadores.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/pencil-fill.svg" width="20px"></a></td>
+                      <td class="text-center"><a href="./funcoes/deletaPessoa.php?id=<?php echo $resultLocats['id'] ?>"><img src="./css/trash-fill.svg" width="20" onclick="return confirm('Você confirma a exclusão deste registro?')"></a></td>
                     </tr>
             <?php } ?>
                 
@@ -96,11 +96,12 @@
     <?php if(!empty($_SESSION['sucesso'])){?>
                   <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
-            <?php  } ?>
+    <?php  } ?>
     <?php if(!empty($_SESSION['existe'])){?>
                   <p class="alert alert-danger"><?php echo $_SESSION['existe'];  ?></p> 
             <?php unset($_SESSION['existe']); ?>
-            <?php  } ?>
+    <?php  } ?>
+    <br><br>
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021
     </footer>

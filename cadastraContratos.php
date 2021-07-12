@@ -62,7 +62,7 @@
               <div class="row mb-3">
                 <div class="col-md-4">
                     <label for="exampleFormControlSelect1">Escolha o Locador</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locador">
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locador" autofocus>
                               <option selected>Lista de Locadores</option> 
                               <option value="3">Joaozinho</option>
                               <option value="4">Mariazinha de Almeida</option>

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once("./funcoes/db.php");
 
   if($_SESSION['logado']){
     $iduser = $_SESSION['iduser'];
@@ -8,6 +9,11 @@
     $_SESSION["logado"] = "Você não está logado no sistema.";
     header("Location: index.php");
   }
+
+  $id_imovel = $_GET['id'];
+  // Puxar dados do imóvel cujo id é o de cima.
+  $queryImovel = mysqli_query($conn, "SELECT * FROM imoveis WHERE id='$id_imovel'");
+  $imovel = mysqli_fetch_assoc($queryImovel);
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +46,7 @@
               <a class="nav-link text-secondary bg-white border-dark" href="listaLocadores.php">Listar Locadores/Locatários</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active text-white bg-secondary border-dark" href="#">Cadastrar Imóvel</a>
+              <a class="nav-link active text-white bg-secondary border-dark" href="#">Editar Imóvel</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-secondary bg-white border-dark" href="listarImoveis.php">Listar Imóveis</a>
@@ -55,9 +61,9 @@
 
         <!---Formulário de Cadastro de Locador --->
         <fieldset>
-        <legend>Cadastro de Imóveis</legend>
+        <legend>Editar dados de Imóvel</legend>
         <div class="container w-auto mt-2">
-            <form class="form-group border border-dark p-4 rounded" action="./funcoes/cadastroImoveisDB.php" method="post">
+            <form class="form-group border border-dark p-4 rounded" action="./funcoes/editaImovelDB.php" method="post">
               <!----Linha 1---->
               <div class="row mb-3">
                   <div class="col-md-4">
@@ -67,6 +73,8 @@
                             <option value="Casa">Casa</option>
                             <option value="Sobrado">Sobrado</option>
                             <option value="Sala">Sala</option>
+
+                            <option selected ><?php echo $imovel['descricao'] ?></option>
                           </select>
                       
                   </div>
@@ -75,11 +83,13 @@
                           <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="utilizacao">
                             <option value="Comercial" selected>Comercial</option>
                             <option value="Residencial">Residencial</option>
+
+                            <option selected value="<?php echo $imovel['utilizacao'] ?>"><?php echo $imovel['utilizacao'] ?></option>
                           </select>
                   </div>
                   <div class="col-md-1">
                     <label for="">W.C</label>
-                    <input class="form-control form-control-sm" type="number" name="wc" size="20" maxlength="2">
+                    <input class="form-control form-control-sm" type="number" name="wc" size="20" maxlength="2" value="<?php echo $imovel['wc'] ?>">
                   </div>
                   
               </div>
@@ -88,7 +98,7 @@
               <div class="row mb-3">
                   <div class="col-md-1">
                       <label for="">Área m²</label>
-                      <input class="form-control form-control-sm" type="text" name="area" maxlength="6">
+                      <input class="form-control form-control-sm" type="text" name="area" maxlength="6" value="<?php echo $imovel['area'] ?>">
                   </div>
                   
                   <div class="col-md-2">
@@ -96,11 +106,13 @@
                           <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="garagem">
                             <option value="Privativa" selected>Privativa</option>
                             <option value="Rotativa">Rotativa</option>
+
+                            <option selected value="<?php echo $imovel['garagem'] ?>"><?php echo $imovel['garagem'] ?></option>
                           </select>
                   </div>
                   <div class="col-md-5">
                     <label for="">Designação</label>
-                    <input class="form-control form-control-sm" type="text" name="designacao" placeholder="'apto 01', 'Sala 05' ...">
+                    <input class="form-control form-control-sm" type="text" name="designacao" placeholder="'apto 01', 'Sala 05' ..." value="<?php echo $imovel['designacao'] ?>">
                   </div>
               </div>
 
@@ -108,15 +120,15 @@
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="">Logradouro</label>
-                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" placeholder="Digite o endereço">
+                      <input class="form-control form-control-sm" type="text" name="logradouro" maxlength="127" placeholder="Digite o endereço" value="<?php echo $imovel['logradouro'] ?>">
                   </div>
                   <div class="col-md-2">
                     <label for="">Número</label>
-                    <input class="form-control form-control-sm" type="number" name="numero" maxlength="5" placeholder="Digite o número">
+                    <input class="form-control form-control-sm" type="number" name="numero" maxlength="5" placeholder="Digite o número" value="<?php echo $imovel['numero'] ?>">
                   </div>
                   <div class="col-md-4">
                     <label for="">Complemento</label>
-                    <input class="form-control form-control-sm" type="text" name="complemento" placeholder="Digite o complemento">
+                    <input class="form-control form-control-sm" type="text" name="complemento" placeholder="Digite o complemento" value="<?php echo $imovel['complemento'] ?>">
                   </div>
               </div>
 
@@ -124,19 +136,20 @@
               <div class="row mb-3">
                   <div class="col-md-5">
                       <label for="">Bairro</label>
-                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" placeholder="Digite o bairro">
+                      <input class="form-control form-control-sm" type="text" name="bairro" maxlength="127" placeholder="Digite o bairro" value="<?php echo $imovel['bairro'] ?>">
                   </div>
                   <div class="col-md-5">
                     <label for="">Cidade</label>
-                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" placeholder="Digite a cidade">
+                    <input class="form-control form-control-sm" type="text" name="cidade" maxlength="127" placeholder="Digite a cidade" value="<?php echo $imovel['cidade'] ?>">
                   </div>
                   <div class="col-md-2">
                     <label for="">CEP</label>
-                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" placeholder="00000-000">
+                    <input class="form-control form-control-sm" type="text" name="cep" id="" maxlength="9" placeholder="00000-000" value="<?php echo $imovel['cep'] ?>">
                   </div>
               </div>
-      
-              <input type="submit" class="btn btn-primary mt-3" value="Cadastrar">
+                <input type="hidden" name="id_usuario" value="<?php echo $imovel['id_usuario'] ?>">
+                <input type="hidden" name="id_imovel" value="<?php echo $id_imovel ?>">
+              <input type="submit" class="btn btn-primary mt-3" value="Editar">
             </form>
         </div>
         </fieldset>
