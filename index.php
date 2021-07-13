@@ -56,11 +56,7 @@
             <?php unset($_SESSION['existe']); ?>
 
             <?php  } ?>
-            <?php if(!empty($_SESSION['logado'])){?>
-              <p class="alert alert-danger"><?php echo $_SESSION['logado'];  ?></p> 
-            <?php unset($_SESSION['logado']); ?>
-
-            <?php  } ?>
+      
             <?php if(!empty($_SESSION['ativado'])){?>
               <p class="alert alert-danger"><?php echo $_SESSION['ativado'];  ?></p> 
             <?php unset($_SESSION['ativado']); ?>

@@ -229,10 +229,10 @@ function sendEmail($user){
     $envia = $Mailer->send();
 
     if($envia){
-        $_SESSION['sucesso'] = "<br>Mensagem enviada com sucesso para ".$_GET['usuario']."<br>. Verificar sua caixa de email.";
+        $_SESSION['email'] = "<br>Mensagem enviada com sucesso para ".$_GET['usuario']."<br>. Verificar sua caixa de email.";
         header("Location: ../index.php");
     }else{
-        $_SESSION['sucesso'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
+        $_SESSION['email'] = "ERRO:".$Mailer->ErrorInfo."  <a href='http://localhost/Gerenciador%20de%20Alugueis/funcoes/ativa.php?usuario=".$_GET['usuario']."'>Clique aqui pra confirmar sua conta no Sistema de Cadastro de Clientes</a>";
         header("Location: ../index.php");
 
     }

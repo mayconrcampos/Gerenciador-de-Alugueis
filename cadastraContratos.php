@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include_once("./funcoes/db.php");
 
   if($_SESSION['logado']){
     $iduser = $_SESSION['iduser'];
@@ -58,37 +59,53 @@
         <div class="container">
           <fieldset>
             <legend>Cadastro de Contrato</legend>
-            <form class="form-group border border-dark p-4 rounded" action="./funcoes/cadastraContratoDB.php" method="post">
+            <form class="form-group border border-dark p-4 rounded" action="./fechaContrato.php" method="post">
               <div class="row mb-3">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="exampleFormControlSelect1">Escolha o Locador</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locador" autofocus>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="50" name="locador" autofocus>
                               <option selected>Lista de Locadores</option> 
-                              <option value="3">Joaozinho</option>
-                              <option value="4">Mariazinha de Almeida</option>
+
+                        <?php $listaLocadores = mysqli_query($conn, "SELECT id, nome FROM locats WHERE locat='Locador' ORDER BY nome ASC");
+                              while($locador = mysqli_fetch_assoc($listaLocadores)){ ?>
+                              <option value="<?php echo $locador['id'] ?>"><?php echo $locador['nome'] ?></option>
+                      <?php   }?>
                         </select>
                 </div>
-                <div class="col-md-4">
+
+
+                <div class="col-md-3">
                     <label for="exampleFormControlSelect1">Escolha o Locatário</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="locatario">
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="50" name="locatario">
                               <option selected>Lista de Locatários</option> 
-                              <option value="2">Joaozinho</option>
-                              <option value="3">Mariazinha de Almeida</option>
+
+                        <?php $listaLocatarios = mysqli_query($conn, "SELECT id, nome FROM locats WHERE locat='Locatário' ORDER BY nome ASC");
+                              while($locatario = mysqli_fetch_assoc($listaLocatarios)){ ?>
+                              <option value="<?php echo $locatario['id'] ?>"><?php echo $locatario['nome'] ?></option>
+                      <?php   }?>          
                         </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label for="exampleFormControlSelect1">Escolha o Imóvel</label>
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="imovel">
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="50" name="imovel">
                               <option selected>Lista de Imóveis</option> 
-                              <option value="1">Joaozinho</option>
-                              <option value="2">Mariazinha de Almeida</option>
+                        <?php $listaImoveis = mysqli_query($conn, "SELECT id, descricao, utilizacao, designacao, logradouro, numero FROM imoveis WHERE status='0' ORDER BY descricao ASC");
+                              while($imovel = mysqli_fetch_assoc($listaImoveis)){ ?>
+                              <option value="<?php echo $imovel['id'] ?>"><?php echo $imovel['descricao']." - ".$imovel['utilizacao']." - ".$imovel['designacao']." - ".$imovel['logradouro']." - ".$imovel['numero'] ?></option>
+                      <?php   }?>    
                         </select>
                 </div>
               </div>
+              
               <input type="submit" class="btn btn-primary mt-3" value="Fechar Contrato">
             </form>
           </fieldset>
         </div>
+
+        <?php if(!empty($_SESSION['sucesso'])){?>
+                  <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
+            <?php unset($_SESSION['sucesso']); ?>
+        <?php  } ?>
 
     
   

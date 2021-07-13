@@ -67,7 +67,7 @@ if(!empty($nome) and !empty($est_civil) and !empty($profissao) and !empty($rg) a
             header("Location: ../cadastroPF.php");
         }
     }else{
-        // Usuário já existe na base de dados. Não precisa cadastrar de novo, seu monte de bosta.
+        // Usuário já existe na base de dados. Não precisa cadastrar de novo.
         $_SESSION['existe'] = "$nome já existe na base de dados.";
         header("Location: ../listaLocadores.php");
     }

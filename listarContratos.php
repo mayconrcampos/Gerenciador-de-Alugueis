@@ -1,5 +1,7 @@
 <?php
   session_start();
+  include_once("./funcoes/db.php");
+  
 
   if($_SESSION['logado']){
     $iduser = $_SESSION['iduser'];
@@ -66,7 +68,7 @@
                   <th scope="col">Locatário</th>
                   <th scope="col">CPF</th>
                   <th scope="col">Imóvel</th>
-                  <th scope="col">Status</th>
+                  <th scope="col">Status do Contrato</th>
                   <th scope="col">Valor/mês (R$)</th>
                   <th scope="col">Mensalidades</th>
                   <th scope="col">Ver/Editar</th>
@@ -74,20 +76,39 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Aqui vai código php --->
-                <tr>
-                  <th scope="row">Ariana Dionel Campos</th>
-                  <td>03333222123</td>
-                  <td>Célio Pinto</td>
-                  <td>22111236521</td>
-                  <td>Apto-05</td>
-                  <td>Vigente</td>
-                  <td>1300,00</td>
-                  <td>Editar / Pagar</td>
-                  <td>Ed</td>
-                  <td>Ex</td>
-                </tr>
-                
+                <?php 
+                    // Fazendo query da tabela contratos com INNER JOIN com locador, locatario, imovel.
+                    $queryContratos = mysqli_query($conn, "SELECT
+                                            locador.nome,       
+                                            locador.cpf, 
+                                            locat.nome, 
+                                            locat.cpf, 
+                                            imoveis.designacao,
+                                            imoveis.status, 
+                                            contratos.valor,
+                                            contratos.id
+                                            FROM locats AS locador 
+                                            INNER JOIN contratos
+                                            ON contratos.id_locador = locador.id
+                                            INNER JOIN locats AS locat
+                                            ON contratos.id_locatario = locat.id
+                                            INNER JOIN imoveis
+                                            ON contratos.id_imovel = imoveis.id");
+
+                    while($contrato = mysqli_fetch_array($queryContratos)){ ?>
+                      <tr>
+                        <th scope="row"><?php echo $contrato[0] ?></th>
+                        <td><?php echo $contrato[1] ?></td>
+                        <td><?php echo $contrato[2] ?></td>
+                        <td><?php echo $contrato[3] ?></td>
+                        <td><?php echo $contrato[4] ?></td>
+                        <td><?php $status = ($contrato[5]) ? "Vigente":""; echo $status; ?></td>
+                        <td><?php $num = number_format($contrato[6], 2, ",", "."); echo $num; ?></td>
+                        <td><a href="#">Parcelas</a></td>
+                        <td><a href="#"><img src="" alt=""></a></td>
+                        <td><a href="#"><img src="" alt=""></a></td>
+                      </tr>
+            <?php   } ?>
               </tbody>
             </table>
           </div>
@@ -96,6 +117,11 @@
           <p class="alert alert-primary text-center"><?php echo $_SESSION['msg'];?></p>
       <?php unset($_SESSION['msg']); ?>
     <?php   }?>
+
+    <?php if(!empty($_SESSION['sucesso'])){?>
+                  <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
+            <?php unset($_SESSION['sucesso']); ?>
+    <?php  } ?>
     </div>
     <footer class="fixed-bottom bg-secondary text-white text-center p-1">
       For Rent - Programa para Administração de Contratos de Aluguéis de Imóveis ® Maycon R Campos - 07/2021

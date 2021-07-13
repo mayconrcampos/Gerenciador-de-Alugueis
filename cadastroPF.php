@@ -148,10 +148,6 @@
         </div>
         </fieldset>
     </div>
-    <?php if(!empty($_SESSION['sucesso'])){?>
-                  <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
-            <?php unset($_SESSION['sucesso']); ?>
-  <?php  } ?>
   <?php if(!empty($_SESSION['sucesso'])){?>
                   <p class="alert alert-danger"><?php echo $_SESSION['sucesso'];  ?></p> 
             <?php unset($_SESSION['sucesso']); ?>
