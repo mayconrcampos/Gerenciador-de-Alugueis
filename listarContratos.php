@@ -69,9 +69,8 @@
                   <th scope="col">CPF</th>
                   <th scope="col">Imóvel</th>
                   <th scope="col">Status do Contrato</th>
-                  <th scope="col">Valor/mês (R$)</th>
+                  <th scope="col">(R$)/mês</th>
                   <th scope="col">Mensalidades</th>
-                  <th scope="col">Ver/Editar</th>
                   <th scope="col">Excluir</th>
                 </tr>
               </thead>
@@ -99,14 +98,14 @@
                       <tr>
                         <th scope="row"><?php echo $contrato[0] ?></th>
                         <td><?php echo $contrato[1] ?></td>
-                        <td><?php echo $contrato[2] ?></td>
+                        <td><a data-toggle="tooltip" data-placement="top" title="Editar Contrato" href="#"><?php echo $contrato[2] ?></a></td>
                         <td><?php echo $contrato[3] ?></td>
                         <td><?php echo $contrato[4] ?></td>
                         <td><?php $status = ($contrato[5]) ? "Vigente":""; echo $status; ?></td>
                         <td><?php $num = number_format($contrato[6], 2, ",", "."); echo $num; ?></td>
-                        <td><a href="#">Parcelas</a></td>
-                        <td><a href="#"><img src="" alt=""></a></td>
-                        <td><a href="#"><img src="" alt=""></a></td>
+                        <td class="text-center"><a data-toggle="tooltip" data-placement="top" title="Cadastrar/Editar/Pagar Parcelas" href="./vencimentosParcelas.php?id=<?php echo $contrato[7] ?>">Parcelas</a></td>
+                        <td class="text-center"><a href="#" onclick="return confirm('Você deseja realmente excluir este contrato?')"><img src="./css/trash-fill.svg" width="20px"></a></td>
+                     
                       </tr>
             <?php   } ?>
               </tbody>
