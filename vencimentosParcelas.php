@@ -140,7 +140,7 @@
                                                                         ");
                     $mensalidade = mysqli_fetch_array($verificaMensalidades);
                     if(empty($mensalidade)){?>
-                        <div class="row mb-2">
+                        <div class="row mb-3">
                             <div class="col-md-2">
                                 <label for="">Mês da primeira Parcela</label>
                                 <select class="form-control form-control-sm" id="exampleFormControlSelect1" width="10" name="mes_primeira_parcela">
