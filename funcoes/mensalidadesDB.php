@@ -11,19 +11,21 @@ $id_contrato = $_POST['id_contrato'];
 $mes_primeira_parcela = $_POST['mes_primeira_parcela'];
 $status = 0;
 
-// Gerando um array com datas, cada qual numa linha da tabela.
+// Gerando um array de datas com intervalos de 30 em 30 dias.
 $data = date("$dia_vencto/$mes_primeira_parcela/Y");
 $parcelas = calcularParcelas($prazo_contrato, $data);
 
 $data_pagto = NULL;
 $comentario = NULL;
 
+// String que contém o início da query.
 $sql = "INSERT INTO mensalidades (data_vencto, valor, status, id_contrato) VALUES ";
-// concatena os dados linha por linha
 
-
+// Se todas as variáveis tiverem conteúdo.
 if($valor_aluguel and $dia_vencto and $prazo_contrato and $id_contrato and $mes_primeira_parcela){
-    for($i=0; $i < $prazo_contrato; $i++){
+
+    // Laço que concatena queries formando um INSERT de múltiplas linhas.
+    for($i = 0; $i < $prazo_contrato; $i++){    
         $data_da_parcela = $parcelas[$i];
         if($i > 0 ) $sql .= ", ";
         $sql.= "("
@@ -34,9 +36,6 @@ if($valor_aluguel and $dia_vencto and $prazo_contrato and $id_contrato and $mes_
                     .")";
     }
 
-    //$_SESSION['ide'] = $id_contrato;
-    //$_SESSION['sucesso'] = $sql;
-    //header("Location: ../vencimentosParcelas.php");
     $insertMensalidades = mysqli_query($conn, $sql);
 
     if(mysqli_affected_rows($conn)){
@@ -53,7 +52,7 @@ if($valor_aluguel and $dia_vencto and $prazo_contrato and $id_contrato and $mes_
 
     
 }else{
-    $_SESSION['sucesso'] = "Fudeu";
+    $_SESSION['sucesso'] = "ERRO ao gerar parcelas.";
     header("Location: ../vencimentosParcelas.php");
 }
 

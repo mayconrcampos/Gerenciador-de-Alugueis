@@ -63,6 +63,7 @@ function extenso($valor = 0, $maiusculas = false) {
 }
 
 // Função para validar valores monetários float antes de ser inserido no banco de dados.
+// Essa foi eu que escrevi, ta funcionando bem.
 
 function valida_float($num){        // função valida float que recebe uma string
     $conta = 0;                     // Variável de controle.
@@ -92,7 +93,20 @@ function valida_float($num){        // função valida float que recebe uma stri
 }
 
 
-// Função pra calcular datas de vencimento.
+/**
+ * Função que gera N parcelas mensais com a opção de poder escolher o vencimento da primeira parcela.
+ * Se caso você não escolher a data do vencimento da primeira parcela, ele conta o dia de hoje
+ * como sendo a primeira, gerando as demais.
+ * 
+ * Site onde encontrei esta função: https://www.linhadecomando.com/php/php-funcao-para-gerar-parcelas-com-dia-de-vencimento-fixo-melhorado
+ * 
+ * As mudanças que fiz no código para se adaptar ao meu problema foram:
+ * 
+ *  - Criei o array $datas para que, ao invés do laço imprimir uma data, ele pudesse
+ * povoar este array com as datas geradas. 
+ *  - Modifiquei o formato da data de "d/m/Y" para "Y-m-d" para que elas pudessem
+ * serem inseridas no banco de dados.
+ */
 function calcularParcelas($nParcelas, $dataPrimeiraParcela = null){
     if($dataPrimeiraParcela != null){
       $dataPrimeiraParcela = explode( "/",$dataPrimeiraParcela);
@@ -110,3 +124,5 @@ function calcularParcelas($nParcelas, $dataPrimeiraParcela = null){
     }
     return $datas;
   }
+
+

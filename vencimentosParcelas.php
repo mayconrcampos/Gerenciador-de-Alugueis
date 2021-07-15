@@ -85,8 +85,10 @@
             
         ?>
         <div class="container">
+        
           <fieldset>
             <legend>Cadastrar parcelas e vencimentos</legend>
+            
             
               <!------ Dados Contratuais - Linha 1 -------->
             <form class="form-group border border-dark p-4 rounded" action="./funcoes/mensalidadesDB.php" method="POST">
@@ -175,9 +177,8 @@
                                       <th scope="col">Data Vencto</th>
                                       <th scope="col">Status</th>
                                       <th scope="col">Data Pagto</th>
-                                      <th scope="col">Editar Parcela</th>
-                                      <th scope="col">Excluir Parcela</th>
-                                      
+                                      <th scope="col">Recibo</th>    
+                                      <th scope="col">Comentário</th>                            
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -187,8 +188,10 @@
                                                                 locat.nome,
                                                                 mens.valor,
                                                                 DATE_FORMAT(mens.data_vencto, '%d/%m/%Y'),
+                                                                mens.data_vencto,
                                                                 mens.status,
-                                                                mens.data_pagto
+                                                                DATE_FORMAT(mens.data_pagto, '%d/%m/%Y'),
+                                                                c.id
                                                                 FROM locats AS locat
                                                                 INNER JOIN contratos AS c
                                                                 ON c.id_locatario = locat.id
@@ -199,21 +202,36 @@
                      
                                     while($mensalidade = mysqli_fetch_array($listaMensalidades)){ ?>
                                         <tr>
+
                                           <th scope="row"><?php echo $mensalidade[0] ?></th>
+
                                           <td class='text-center'><?php echo number_format($mensalidade[1], 2, ",", ".") ?></td>
-                                          <td class='text-center'><?php echo $mensalidade[2] ?></td>
-                                          <td><?php $status = ($mensalidade[3]) ? "Pago":"Pagar"; echo $status; ?></td>
-                                          <td><?php echo $mensalidade[4] ?></td>
-                                          <td>ed</td>
-                                          <td>ex</td>
+                                        
+                                    <?php   $data_hoje = date("Y-m-d");
+                                            if(strtotime($mensalidade[3]) >= strtotime($data_hoje)):?>
+                                                <td class='alert alert-primary text-center'><?php echo $mensalidade[2] ?></td>
+                                    <?php   else:?>
+                                                <td class='alert alert-danger text-center'><?php echo $mensalidade[2] ?></td>
+                                    <?php   endif; ?>    
+                                    
+                                    <?php   if($status): ?>
+                                                <td class="text-center"><a href="#"><img data-toggle="tooltip" data-placement="top" title="Parcela Paga" src="css/pago.png" width="25px"></a></td>
+                                    <?php   else:   ?>
+                                                <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Pagar Parcela" src="css/pagar.png" width="25px"></a></td>
+                                    <?php   endif; ?>
+                                          
+                                          <td><?php echo $mensalidade[5] ?></td>
+
+                                          <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Emitir Rebido" src="css/recibo.png" width="25px"></a></td>
+
+                                          <td><?php echo $mensalidade[6] ?></td>
+                                    
                                         </tr>
                             <?php   } ?>
                                 </tbody>
                             </table>
                         </div>
                         </fieldset>
-
-                        <a class="alert alert-danger text-center" href="./listarContratos.php">Retornar a lista de contratos</a>
 
             <?php   }?>
             
@@ -224,6 +242,8 @@
             <?php unset($_SESSION['sucesso']); ?>
         <?php  } ?>
         <br><br>
+        <a class="alert alert-primary text-center" href="./listarContratos.php">Retornar a lista de contratos</a>
+
 
     
   
