@@ -106,7 +106,7 @@ function calcularParcelas($nParcelas, $dataPrimeiraParcela = null){
     }
     $datas = [];
     for($x = 0; $x < $nParcelas; $x++){
-      array_push($datas, date("d/m/Y",strtotime("+".$x." month",mktime(0, 0, 0,$mes,$dia,$ano))));
+      array_push($datas, date("Y/m/d",strtotime("+".$x." month",mktime(0, 0, 0,$mes,$dia,$ano))));
     }
     return $datas;
   }
