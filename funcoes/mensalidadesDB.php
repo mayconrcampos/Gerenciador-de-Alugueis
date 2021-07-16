@@ -45,12 +45,7 @@ if($valor_aluguel and $dia_vencto and $prazo_contrato and $id_contrato and $mes_
     }else{
         $_SESSION['sucesso'] = "ERRO ao cadastrar parcelas.";
         header("Location: ./vencimentosParcelas.php");
-    }
-
-
-
-
-    
+    } 
 }else{
     $_SESSION['sucesso'] = "ERRO ao gerar parcelas.";
     header("Location: ../vencimentosParcelas.php");

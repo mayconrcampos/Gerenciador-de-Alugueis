@@ -176,6 +176,7 @@
                                       <th scope="col">Valor/mês (R$)</th>
                                       <th scope="col">Data Vencto</th>
                                       <th scope="col">Status</th>
+                                      <th scope="col">Pagar</th>
                                       <th scope="col">Data Pagto</th>
                                       <th scope="col">Recibo</th>    
                                       <th scope="col">Comentário</th>                            
@@ -191,7 +192,8 @@
                                                                 mens.data_vencto,
                                                                 mens.status,
                                                                 DATE_FORMAT(mens.data_pagto, '%d/%m/%Y'),
-                                                                c.id
+                                                                mens.comentario,
+                                                                mens.id
                                                                 FROM locats AS locat
                                                                 INNER JOIN contratos AS c
                                                                 ON c.id_locatario = locat.id
@@ -214,15 +216,30 @@
                                                 <td class='alert alert-danger text-center'><?php echo $mensalidade[2] ?></td>
                                     <?php   endif; ?>    
                                     
-                                    <?php   if($status): ?>
+                                    <?php   if($mensalidade[4]): ?>
                                                 <td class="text-center"><a href="#"><img data-toggle="tooltip" data-placement="top" title="Parcela Paga" src="css/pago.png" width="25px"></a></td>
                                     <?php   else:   ?>
-                                                <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Pagar Parcela" src="css/pagar.png" width="25px"></a></td>
+                                                <td class="text-center"><a href="#"><img data-toggle="tooltip" data-placement="top" title="Parcela Não Paga" src="css/notrecibo.png" width="25px"></a></td>
                                     <?php   endif; ?>
+
+                                          
+                                          
+                                          <td>
+                                            <?php  ?>
+                                            <a href="pagarParcela.php?id=<?php echo $mensalidade[7] ?>&tipoPagto='1'&valor=<?php echo $mensalidade[1] ?>">Aluguel</a><br>
+                                            <a href="pagarParcela.php?id=<?php echo $mensalidade[7] ?>">Caução</a>
+                                          </td>
+                                          
+                                          
                                           
                                           <td><?php echo $mensalidade[5] ?></td>
 
-                                          <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Emitir Rebido" src="css/recibo.png" width="25px"></a></td>
+                                    <?php if($mensalidade[4]): ?>
+                                            <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Emitir Recibo" src="css/recibo.png" width="25px"></a></td>
+                                    <?php else:?>
+                                            <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Não tem recibo" src="css/notrecibo.png" width="25px"></a></td>
+                                    
+                                    <?php endif;?>
 
                                           <td><?php echo $mensalidade[6] ?></td>
                                     
