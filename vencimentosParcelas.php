@@ -231,11 +231,11 @@
                                           </td>
                                           
                                           
-                                          
+                                          <!-- Data pagto--->
                                           <td><?php echo $mensalidade[5] ?></td>
 
                                     <?php if($mensalidade[4]): ?>
-                                            <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Emitir Recibo" src="css/recibo.png" width="25px"></a></td>
+                                            <td class="text-center"><a href="./funcoes/pdf.php?id=<?php echo $mensalidade[7] ?>"><img data-toggle="tooltip" data-placement="top" title="Emitir Recibo" target="_blank" src="css/recibo.png" width="25px"></a></td>
                                     <?php else:?>
                                             <td class="text-center"><a href=""><img data-toggle="tooltip" data-placement="top" title="Não tem recibo" src="css/notrecibo.png" width="25px"></a></td>
                                     

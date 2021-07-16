@@ -1,17 +1,38 @@
 <?php 
+ 
  include("../mpdf60/mpdf.php");
- session_start();
+
+ //include_once("./db.php");
+
+ //$id_mensalidade = $_GET['id'];
+
+ // Fazendo query para puxar os seguintes dados: Por ordem:
+ /**
+  * id_mensalidade
+  * valor
+  * nome_locatário
+  * valor_extenso
+  * denominação
+  * cidade_imovel
+  * data de pagto da parcela
+  * nome_locador
+  * cpf_locador
+  * logradouro
+  * numero
+  * bairro
+  * cidade
+  */
 
  $html = "
  <fieldset>
  <h1>Comprovante de Recibo</h1>
  <p class='center sub-titulo'>
- Nº <strong>0001</strong> - 
+ Nº <strong>id-mensalidade</strong> - 
  VALOR <strong>R$ 700,00</strong>
  </p>
  <p>Recebi(emos) de <strong>Ebrahim Paula Leite</strong></p>
  <p>a quantia de <strong>Setecentos Reais</strong></p>
- <p>Correspondente a <strong>Serviços prestados ..<strong></p>
+ <p>Correspondente a <strong>Aluguel do Imóvel denominado ..<strong></p>
  <p>e para clareza firmo(amos) o presente.</p>
  <p class='direita'>Itapeva, 11 de Julho de 2017</p>
  <p>Assinatura ......................................................................................................................................</p>
