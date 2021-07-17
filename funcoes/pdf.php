@@ -5,7 +5,7 @@
 include_once("./funcs.php");
 
  $id_mensalidade = $_GET['id'];
-echo $id_mensalidade;
+
  // Query em três tabelas.
 
  $queryRecibo = mysqli_query($conn,"SELECT 
@@ -22,7 +22,8 @@ echo $id_mensalidade;
                                     locador.complemento,
                                     locador.bairro,
                                     locador.cidade,
-                                    locador.cep
+                                    locador.cep,
+                                    mens.comentario
                                     FROM mensalidades AS mens
                                     INNER JOIN contratos
                                     ON mens.id_contrato = contratos.id
@@ -38,13 +39,6 @@ $resultado = mysqli_fetch_array($queryRecibo);
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 date_default_timezone_set('America/Sao_Paulo');
 
-
-
-if(!empty($resultado)){
-    echo $resultado[1];
-}else{
-    echo "Não tá indo.";
-}
 $html = "
 <!DOCTYPE html>
 <html lang='pt-br'>
@@ -64,26 +58,25 @@ $html = "
  <p>Recebi(emos) de <strong>".$resultado[2]."</strong></p>
  <p>a quantia de <strong>".extenso($resultado[1])."</strong></p>
  <p>Correspondente ao <strong>Aluguel do Imóvel denominado <strong>".$resultado[5]."</strong></p>
- <p>e para clareza firmo(amos) o presente.</p>
- <p class='direita'>".$resultado[6].", ".strftime('%d de %B de %Y', strtotime($resultado[7]))."</p>
+ <p style='text-align:center;'><strong>".$resultado[14]."</strong></p>
+ <p class='direita'>".$resultado[6].", ".utf8_encode(strftime('%d de %B de %Y', strtotime($resultado[7])))."</p>
  <p>Assinatura ......................................................................................................................................</p>
  <p>Nome <strong>".$resultado[3]."</strong> CPF/CNPJ: <strong>".formatCnpjCpf($resultado[4])."</strong></p>
  <p>Endereço <strong>".$resultado[8].", ".$resultado[9]." - ".$resultado[10].", ".$resultado[11]." - ".$resultado[13]." - SC</strong></p>
  </fieldset>
- <div class='creditos'>
  
- </div>
 
-    
 </body>
 </html>
 ";
  
  $mpdf=new mPDF(); 
+ 
  $mpdf->SetDisplayMode('fullpage');
  $css = file_get_contents("../css/estilo.css");
  $mpdf->WriteHTML($css,1);
  $mpdf->WriteHTML($html);
  $mpdf->Output();
+
 
  exit;
