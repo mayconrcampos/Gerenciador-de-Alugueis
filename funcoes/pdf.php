@@ -1,49 +1,84 @@
 <?php 
  
  include("../mpdf60/mpdf.php");
+ include_once("./db.php");
+include_once("./funcs.php");
 
- //include_once("./db.php");
+ $id_mensalidade = $_GET['id'];
+echo $id_mensalidade;
+ // Query em três tabelas.
 
- //$id_mensalidade = $_GET['id'];
+ $queryRecibo = mysqli_query($conn,"SELECT 
+                                    mens.id,
+                                    mens.valor,
+                                    locatario.nome,
+                                    locador.nome,
+                                    locador.cpf,
+                                    imoveis.designacao,
+                                    imoveis.cidade,
+                                    mens.data_pagto,
+                                    locador.logradouro,
+                                    locador.numero,
+                                    locador.complemento,
+                                    locador.bairro,
+                                    locador.cidade,
+                                    locador.cep
+                                    FROM mensalidades AS mens
+                                    INNER JOIN contratos
+                                    ON mens.id_contrato = contratos.id
+                                    INNER JOIN locats AS locatario
+                                    ON contratos.id_locatario = locatario.id
+                                    INNER JOIN locats AS locador
+                                    ON contratos.id_locador = locador.id
+                                    INNER JOIN imoveis
+                                    ON contratos.id_imovel = imoveis.id                                 
+                                    WHERE mens.id='$id_mensalidade'");
+$resultado = mysqli_fetch_array($queryRecibo);
 
- // Fazendo query para puxar os seguintes dados: Por ordem:
- /**
-  * id_mensalidade
-  * valor
-  * nome_locatário
-  * valor_extenso
-  * denominação
-  * cidade_imovel
-  * data de pagto da parcela
-  * nome_locador
-  * cpf_locador
-  * logradouro
-  * numero
-  * bairro
-  * cidade
-  */
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 
- $html = "
- <fieldset>
- <h1>Comprovante de Recibo</h1>
+
+
+if(!empty($resultado)){
+    echo $resultado[1];
+}else{
+    echo "Não tá indo.";
+}
+$html = "
+<!DOCTYPE html>
+<html lang='pt-br'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Recibo</title>
+</head>
+<body>
+<fieldset>
+ <h1>Recibo de Pagamento de Aluguel</h1>
  <p class='center sub-titulo'>
- Nº <strong>id-mensalidade</strong> - 
- VALOR <strong>R$ 700,00</strong>
+ Nº <strong>".$resultado[0]."</strong> - 
+ VALOR (R$) <strong>".number_format($resultado[1], 2, ",", ".")."</strong>
  </p>
- <p>Recebi(emos) de <strong>Ebrahim Paula Leite</strong></p>
- <p>a quantia de <strong>Setecentos Reais</strong></p>
- <p>Correspondente a <strong>Aluguel do Imóvel denominado ..<strong></p>
+ <p>Recebi(emos) de <strong>".$resultado[2]."</strong></p>
+ <p>a quantia de <strong>".extenso($resultado[1])."</strong></p>
+ <p>Correspondente ao <strong>Aluguel do Imóvel denominado <strong>".$resultado[5]."</strong></p>
  <p>e para clareza firmo(amos) o presente.</p>
- <p class='direita'>Itapeva, 11 de Julho de 2017</p>
+ <p class='direita'>".$resultado[6].", ".strftime('%d de %B de %Y', strtotime($resultado[7]))."</p>
  <p>Assinatura ......................................................................................................................................</p>
- <p>Nome <strong>Alberto Nascimento Junior</strong> CPF/CNPJ: <strong>222.222.222-02</strong></p>
- <p>Endereço <strong>Rua Doutor Pinheiro, 144 - Centro, Itapeva - São Paulo</strong></p>
+ <p>Nome <strong>".$resultado[3]."</strong> CPF/CNPJ: <strong>".formatCnpjCpf($resultado[4])."</strong></p>
+ <p>Endereço <strong>".$resultado[8].", ".$resultado[9]." - ".$resultado[10].", ".$resultado[11]." - ".$resultado[13]." - SC</strong></p>
  </fieldset>
  <div class='creditos'>
  
  </div>
- ";
 
+    
+</body>
+</html>
+";
+ 
  $mpdf=new mPDF(); 
  $mpdf->SetDisplayMode('fullpage');
  $css = file_get_contents("../css/estilo.css");
