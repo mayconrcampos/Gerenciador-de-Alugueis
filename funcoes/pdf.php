@@ -47,6 +47,7 @@ $html = "
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Recibo</title>
+    <link rel='preload' href='../css/Assinatura.ttf' as='font' type='font/ttf' crossorigin>
 </head>
 <body>
 <fieldset>
@@ -60,7 +61,7 @@ $html = "
  <p>Correspondente ao <strong>Aluguel do Imóvel denominado <strong>".$resultado[5]."</strong></p>
  <p style='text-align:center;'><strong>".$resultado[14]."</strong></p>
  <p class='direita'>".$resultado[6].", ".utf8_encode(strftime('%d de %B de %Y', strtotime($resultado[7])))."</p>
- <p>Assinatura ......................................................................................................................................</p>
+ <p id='ass'>Assinatura  ___________________________________________________</p>
  <p>Nome <strong>".$resultado[3]."</strong> CPF/CNPJ: <strong>".formatCnpjCpf($resultado[4])."</strong></p>
  <p>Endereço <strong>".$resultado[8].", ".$resultado[9]." - ".$resultado[10].", ".$resultado[11]." - ".$resultado[13]." - SC</strong></p>
  </fieldset>

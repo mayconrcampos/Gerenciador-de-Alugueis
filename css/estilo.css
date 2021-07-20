@@ -1,3 +1,5 @@
+
+
 fieldset{
  width: 750px;
  margin: 10px auto;
@@ -21,4 +23,21 @@ p.sub-titulo{
 
 .center{
  text-align: center;
+}
+
+@font-face {
+    font-family: 'Assinatura';
+    src: local('Assinatura'),
+        url('./Assinatura.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+#ass {
+    font-family: 'Assinatura';
+    font-weight: normal;
+    font-style: normal;
+                                                
 }
